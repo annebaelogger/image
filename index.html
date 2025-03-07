@@ -7,22 +7,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #0d0d0d;
+            background: linear-gradient(135deg, #0d0d0d, #ff0080);
             color: white;
-            text-align: center;
             font-family: 'Poppins', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
+            text-align: center;
         }
+        
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(255, 0, 128, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #ff0080;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff0080;
+        }
+
+        .search-box {
+            background: #222;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+            outline: none;
+        }
+
+        /* Page Content */
+        .container {
+            margin-top: 100px;
+        }
+
         h1 {
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 20px;
         }
+
         .generate-btn {
             background: linear-gradient(45deg, #ff00ff, #ff66b2);
             color: white;
@@ -34,14 +79,17 @@
             transition: 0.3s;
             box-shadow: 0 0 15px #ff00ff;
         }
+
         .generate-btn:hover {
             box-shadow: 0 0 25px #ff66b2;
             transform: scale(1.05);
         }
+
         .options {
             display: none;
             margin-top: 20px;
         }
+
         .option-btn {
             background: #222;
             color: white;
@@ -53,15 +101,18 @@
             font-size: 18px;
             transition: 0.3s;
         }
+
         .option-btn:hover {
             background: #ff66b2;
             color: #fff;
         }
+
         .link-display {
             margin-top: 20px;
             display: none;
             font-size: 18px;
         }
+
         .link-display a {
             color: #ff66b2;
             text-decoration: none;
@@ -70,24 +121,38 @@
     </style>
 </head>
 <body>
-    <h1>Image Logger - by annebae</h1>
-    <button class="generate-btn" onclick="showOptions()">Generate</button>
-    
-    <div class="options" id="options">
-        <button class="option-btn" onclick="generateLink('Video')">Video</button>
-        <button class="option-btn" onclick="generateLink('GIF')">GIF</button>
-        <button class="option-btn" onclick="generateLink('Photo')">Photo</button>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Generated Logger Info</a>
+            <a href="#">Targets</a>
+        </div>
+        <input type="text" class="search-box" placeholder="Search...">
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Image Logger - by annebae</h1>
+        <button class="generate-btn" onclick="showOptions()">Generate</button>
+        
+        <div class="options" id="options">
+            <button class="option-btn" onclick="generateLink('Video')">Video</button>
+            <button class="option-btn" onclick="generateLink('GIF')">GIF</button>
+            <button class="option-btn" onclick="generateLink('Photo')">Photo</button>
+        </div>
+        
+        <div class="link-display" id="linkDisplay">
+            <p>Generated Link: <a id="imageLink" href="#" target="_blank">Click Here</a></p>
+        </div>
     </div>
-    
-    <div class="link-display" id="linkDisplay">
-        <p>Generated Link: <a id="imageLink" href="#" target="_blank">Click Here</a></p>
-    </div>
-    
+
     <script>
         function showOptions() {
             document.getElementById("options").style.display = "block";
         }
-        
+
         function generateLink(type) {
             const randomId = Math.floor(Math.random() * 100000);
             const link = `https://cdn.discordapp.com/${type.toLowerCase()}/generated_${randomId}`;
@@ -97,5 +162,6 @@
             document.getElementById("linkDisplay").style.display = "block";
         }
     </script>
+
 </body>
 </html>
