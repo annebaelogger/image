@@ -3,151 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Logger - by annebae</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Image Logger | by annebae</title>
     <style>
-        /* General Styling */
         body {
-            background: #fdfdfd;
-            color: #333;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #fff, #ffccff);
+            text-align: center;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
-
-        /* Navigation Bar */
         .navbar {
+            background: rgba(255, 192, 203, 0.9);
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #ffe6f2;
-            padding: 15px 30px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            box-shadow: 0 4px 10px rgba(255, 20, 147, 0.2);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
         .nav-links a {
-            color: #ff1493;
-            text-decoration: none;
+            color: hotpink;
             font-size: 18px;
-            font-weight: 500;
-            padding: 10px 15px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 15px;
             transition: 0.3s;
-            border-radius: 10px;
         }
-
         .nav-links a:hover {
-            background: #ffb6c1;
-            box-shadow: 0 0 10px #ff1493;
+            text-shadow: 0px 0px 5px hotpink;
         }
-
         .search-box {
-            background: #fff;
-            border: 2px solid #ffb6c1;
-            padding: 8px 15px;
+            padding: 8px 12px;
             border-radius: 20px;
-            color: #333;
+            border: 2px solid hotpink;
             outline: none;
         }
-
-        /* Page Content */
-        .container {
-            margin-top: 120px;
-        }
-
-        /* Stylish Title */
-        h1 {
-            font-size: 3em;
-            font-weight: 600;
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        /* Generate Button */
-        .generate-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .generate-btn {
-            background: linear-gradient(45deg, #ff66b2, #ff1493);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: 0.3s;
-            box-shadow: 0 0 15px #ff66b2;
-        }
-
-        .generate-btn:hover {
-            box-shadow: 0 0 25px #ff1493;
-            transform: scale(1.05);
-        }
-
-        /* Annebae Small Text */
-        .by-annebae {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-            color: #ff1493;
-            margin-top: 5px;
-        }
-
-        /* Options for Video/GIF/Photo */
-        .options {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .option-btn {
-            background: #ffeff5;
-            color: #ff1493;
-            border: 2px solid #ff69b4;
-            padding: 12px 24px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 30px;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        .option-btn:hover {
-            background: #ff69b4;
-            color: white;
-        }
-
-        /* Link Display */
-        .link-display {
-            margin-top: 20px;
-            display: none;
-            font-size: 18px;
-        }
-
-        .link-display a {
-            color: #ff1493;
-            text-decoration: none;
+        .title {
+            font-size: 42px;
             font-weight: bold;
+            color: hotpink;
+            margin-top: 50px;
+            text-shadow: 2px 2px 10px pink;
+        }
+        .generate-btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(to right, #ff66b2, #ff1493);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0px 5px 15px rgba(255, 20, 147, 0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .generate-btn:hover {
+            transform: scale(1.1);
+        }
+        .options {
+            margin-top: 20px;
+        }
+        .options button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid hotpink;
+            background: none;
+            color: hotpink;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .options button:hover {
+            background: hotpink;
+            color: white;
+        }
+        .generated-link {
+            margin-top: 20px;
+            font-size: 18px;
         }
     </style>
+    <script>
+        function generateLogger() {
+            document.getElementById('generatedLink').innerHTML =
+                'Generated Link: <span style="color: hotpink;">https://cdn.discordapp.com/video/generated_' + Math.floor(Math.random() * 100000) + '</span>';
+        }
+    </script>
 </head>
 <body>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+    <div class="navbar">
         <div class="nav-links">
             <a href="#">Home</a>
             <a href="#">Generated Logger Info</a>
@@ -155,41 +98,15 @@
             <a href="#">Auto Scan</a>
         </div>
         <input type="text" class="search-box" placeholder="Search...">
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container">
-        <h1>Image Logger</h1>
-        <div class="generate-container">
-            <button class="generate-btn" onclick="showOptions()">Generate Image Logger</button>
-            <div class="by-annebae">by annebae</div>
-        </div>
-        
-        <div class="options" id="options">
-            <button class="option-btn" onclick="generateLink('Video')">Video</button>
-            <button class="option-btn" onclick="generateLink('GIF')">GIF</button>
-            <button class="option-btn" onclick="generateLink('Photo')">Photo</button>
-        </div>
-        
-        <div class="link-display" id="linkDisplay">
-            <p>Generated Link: <a id="imageLink" href="#" target="_blank">Click Here</a></p>
-        </div>
     </div>
-
-    <script>
-        function showOptions() {
-            document.getElementById("options").style.display = "block";
-        }
-
-        function generateLink(type) {
-            const randomId = Math.floor(Math.random() * 100000);
-            const link = `https://cdn.discordapp.com/${type.toLowerCase()}/generated_${randomId}`;
-            
-            document.getElementById("imageLink").href = link;
-            document.getElementById("imageLink").textContent = link;
-            document.getElementById("linkDisplay").style.display = "block";
-        }
-    </script>
-
+    <h1 class="title">Image Logger</h1>
+    <button class="generate-btn" onclick="generateLogger()">Generate Image Logger</button>
+    <p>by annebae</p>
+    <div class="options">
+        <button onclick="generateLogger()">Video</button>
+        <button onclick="generateLogger()">GIF</button>
+        <button onclick="generateLogger()">Photo</button>
+    </div>
+    <p class="generated-link" id="generatedLink">Generated Link: <span style="color: hotpink;">Click Generate</span></p>
 </body>
 </html>
