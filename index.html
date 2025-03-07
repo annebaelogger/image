@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Logger - by annebae</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: white;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .generate-btn {
+            background: linear-gradient(45deg, #ff00ff, #ff66b2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px #ff00ff;
+        }
+        .generate-btn:hover {
+            box-shadow: 0 0 25px #ff66b2;
+            transform: scale(1.05);
+        }
+        .options {
+            display: none;
+            margin-top: 20px;
+        }
+        .option-btn {
+            background: #222;
+            color: white;
+            border: 2px solid #ff66b2;
+            padding: 12px 24px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .option-btn:hover {
+            background: #ff66b2;
+            color: #fff;
+        }
+        .link-display {
+            margin-top: 20px;
+            display: none;
+            font-size: 18px;
+        }
+        .link-display a {
+            color: #ff66b2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Logger - by annebae</h1>
+    <button class="generate-btn" onclick="showOptions()">Generate</button>
+    
+    <div class="options" id="options">
+        <button class="option-btn" onclick="generateLink('Video')">Video</button>
+        <button class="option-btn" onclick="generateLink('GIF')">GIF</button>
+        <button class="option-btn" onclick="generateLink('Photo')">Photo</button>
+    </div>
+    
+    <div class="link-display" id="linkDisplay">
+        <p>Generated Link: <a id="imageLink" href="#" target="_blank">Click Here</a></p>
+    </div>
+    
+    <script>
+        function showOptions() {
+            document.getElementById("options").style.display = "block";
+        }
+        
+        function generateLink(type) {
+            const randomId = Math.floor(Math.random() * 100000);
+            const link = `https://cdn.discordapp.com/${type.toLowerCase()}/generated_${randomId}`;
+            
+            document.getElementById("imageLink").href = link;
+            document.getElementById("imageLink").textContent = link;
+            document.getElementById("linkDisplay").style.display = "block";
+        }
+    </script>
+</body>
+</html>
